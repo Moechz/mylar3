@@ -1,0 +1,94 @@
+{
+  "app_id": "mylar3docker",
+  "title": "Mylar3",
+  "image": "linuxserver/mylar3:0.9.0",
+  "repo_name": "mylar3",
+  "mode": "wrapper",
+  "container_port": 8090,
+  "category": [
+    "Audio_Video_Entertainment"
+  ],
+  "volumes": [
+    {
+      "host": "/Volume1/DockerAppData/mylar3docker/config",
+      "container": "/config"
+    }
+  ],
+  "env": {
+    "TZ": "Asia/Shanghai"
+  },
+  "auth": "linuxserver.io",
+  "upstream_url": "https://github.com/linuxserver/docker-mylar3",
+  "upstream_license": "GPL-3.0-only",
+  "descript": "[Mylar3](https://github.com/MylarComics/mylar3) is an automated Comic Book downloader (cbr/cbz) for use with NZB and torrents written in python. It supports SABnzbd, NZBGET, and many torrent clients in addition to DDL. Packaged for TerraMaster TOS 7: the official Docker Hub image runs as a container on your NAS, keeps its data in the application data folder (so it survives restarts and updates), and is opened from its desktop icon.",
+  "release_note": "1. First release.",
+  "important": "First run: open the web UI and complete the initial setup. Data lives in /Volume1/DockerAppData/mylar3docker/ and survives restarts and updates. The container runs as uid 1000, so mounted folders must be readable by that user. Needs DockerEngine; configure a registry mirror if Docker Hub is unreachable. Back up the application data folder before uninstalling with data removal. Plain HTTP on the LAN.",
+  "probe": {
+    "user_in_image": "(root)",
+    "entrypoint": [
+      "/init"
+    ],
+    "cmd": null,
+    "exposed_ports": [
+      8090
+    ],
+    "declared_volumes": [
+      "/config"
+    ],
+    "image_healthcheck": [],
+    "digest": "linuxserver/mylar3@sha256:2d2920fb5dac4a9e3a556d52aaa5e9e694dd21a892c61354fa21577bcdaa4568",
+    "architecture": "x86_64",
+    "platforms": [],
+    "http_client_in_image": "curl",
+    "trial_run": {
+      "ok": true,
+      "http_code": "",
+      "state": "running",
+      "paths": [],
+      "host_port": 18000,
+      "log_tail": "/package/admin/s6-overlay/libexec/preinit: info: /run belongs to uid 0 instead of 1000 - fixing it\n[migrations] started\n[migrations] no migrations found\nusermod: no changes\n───────────────────────────────────────\n  _____ __ __ _____ _____ _____ _____ \n |     |  |  |   __|_   _|     |     |\n |   --|  |  |__   | | | |  |  | | | |\n/run/s6/basedir/scripts/rc.init: 35: /docker-mods: Permission denied\n/run/s6/basedir/scripts/rc.init: warning: hook /docker-mods exited 126\ngroupmod: Permission denied.\ngroupmod: cannot lock /etc/group; try again later.\n |_____|_____|_____| |_| |_____|_|_|_|\n       _____ __ __ _ __    ____  \n      | __  |  |  | |  |  |    \\ \n      | __ -|  |  | |  |__|  |  |\n      |_____|_____|_|_____|____/ \n\n  Based on images from linuxserver.io\n───────────────────────────────────────\n\nTo support the app dev(s) visit:\nMylar3: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EWQADB5AMVRFU\n\nTo support LSIO projects visit:\nhttps://www.linuxserver.io/donate/\n\n───────────────────────────────────────\nGID/UID\n───────────────────────────────────────\n\nUser UID:    911\nUser GID:    1000\n───────────────────────────────────────\n\n/etc/s6-overlay/s6-rc.d/init-adduser/run: line 30: /usr/bin/lsiown: Permission denied\n/etc/s6-overlay/s6-rc.d/init-adduser/run: line 31: /usr/bin/lsiown: Permission denied\n/etc/s6-overlay/s6-rc.d/init-adduser/run: line 32: /usr/bin/lsiown: Permission denied\ns6-rc: warning: unable to start service init-adduser: command exited 126",
+      "files_in_mounts": ""
+    },
+    "docker_hub": {},
+    "github": {
+      "owner": "linuxserver",
+      "repo": "docker-mylar3",
+      "description": "",
+      "license": "GPL-3.0",
+      "homepage": ""
+    }
+  },
+  "healthcheck": [
+    "CMD-SHELL",
+    "curl -fsS http://127.0.0.1:8090/ >/dev/null || exit 1"
+  ],
+  "platform": "x86_64",
+  "user": "1000:1000",
+  "publisher": "Moechz",
+  "compose_project": "mylar3docker",
+  "github_repo": "mylar3",
+  "upstream_version": "0.9.0",
+  "release_tag_prefix": "v",
+  "version": "0.9.0-1",
+  "help": "https://github.com/Moechz/mylar3/issues",
+  "official": "https://github.com/linuxserver/docker-mylar3",
+  "license": "GPL-3.0-only",
+  "docker_socket": false,
+  "group_add": [],
+  "platforms": [
+    "x86_64",
+    "aarch64"
+  ],
+  "translations": {
+    "zh-cn": {
+      "descript": "美漫自动下载与管理工具。",
+      "important": "首次使用请打开网页完成初始化。数据保存在 DockerAppData/mylar3docker，重启和升级不会丢失。容器以 uid 1000 运行，挂载目录需对该用户可读。需要 DockerEngine；Docker Hub 不可达时先配置镜像加速。卸载并删除数据前请备份。局域网内为 HTTP。"
+    },
+    "zh-hk": {
+      "descript": "美漫自动下载与管理工具。",
+      "important": "首次使用請開啟網頁完成初始化。資料保存在 DockerAppData/mylar3docker，重新啟動和升級不會遺失。容器以 uid 1000 運行，掛載目錄需對該使用者可讀。需要 DockerEngine；Docker Hub 不可達時先設定鏡像加速。解除安裝並刪除資料前請備份。區域網路內為 HTTP。"
+    }
+  },
+  "host_port": 8075,
+  "entrypoint_file": "specs/mylar3-entrypoint.sh"
+}
